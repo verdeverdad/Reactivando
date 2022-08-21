@@ -1,13 +1,14 @@
-import './App.css';
+import React, { Component } from 'react';
 import {Navbar, NavbarBrand} from 'reactstrap';
 import Destinos from './components/destinosComponents';
+import './App.css';
+import { DESTINOS} from './shared/destinos'
 
-
-function App() {
+/*function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Navbar dark color="primary">
+      
+        <Navbar dark color="success">
 
         </Navbar>
         <dic className="container">
@@ -15,27 +16,36 @@ function App() {
         </dic>
        
       
-      </header>
+     
       <Destinos />
       
     </div>
   );
 }
+*/
 
+class App extends Component {
+  constructor(props){
+    super(props);
 
-/*class App extends Component {
+    this.state = {
+      destinos: DESTINOS
+    };
+  }
   render() {
     return (
-      <div className="App">
+      <div>
         <Navbar dark color="primary">
           <div className="container">
-            <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
+            <NavbarBrand href="/">Destinos de viaje</NavbarBrand>
           </div>
         </Navbar>
+
+        <Destinos destinos={this.state.destinos}/>
       </div>
     );
   }
-}*/
+}
 
 
 export default App;

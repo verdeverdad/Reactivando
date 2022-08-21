@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Media } from 'reactstrap';
+import { Card, CardImg, CardImgOverlay, CardText, CardBody,
+    CardTitle } from 'reactstrap';
 
-class Destinos extends Component {
+/*class Destinos extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -36,7 +37,7 @@ class Destinos extends Component {
                 {
                     id: 3,
                     name: 'ElaiCheese Cake',
-                    image: 'assets/img3.jpeg',
+                    image: 'assets/img.JPG',
                     category: 'dessert',
                     label: '',
                     price: '2.99',
@@ -51,19 +52,19 @@ class Destinos extends Component {
             return (
                 <div key={dish.id} className="algo">
                     <div className='row'>
-                        <div className='col-sm-6'>
+                        <div className='col'>
                             <Media tag="li">
                                 <Media left middle>
                                     <Media object src={dish.image} alt={dish.name} />
                                 </Media>
                                 <Media body className="ml-5">
-                                    <Media heading>{dish.name}</Media>
+                                    <Media heading className='text-center'>{dish.name}</Media>
                                     <p>{dish.description}</p>
+                                    <p>{dish.category}</p>
                                 </Media>
                             </Media>
                         </div>
-                        <div className='col-sm-6'>
-                        </div>
+                        
                     </div>
                 </div>
             );
@@ -75,6 +76,76 @@ class Destinos extends Component {
                     <Media list>
                         {destino}
                     </Media>
+                </div>
+            </div>
+        );
+    }
+}
+
+export default Destinos;*/
+
+
+
+ 
+
+
+class Destinos extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            selectedDish: null
+        }
+    }
+
+    onDishSelect(dish) {
+        this.setState({ selectedDish: dish});
+    }
+
+    renderDish(dish) {
+        if (dish != null)
+            return(
+                <div key={dish.id} className="col-12 col-md-5 m-1">
+                    <Card>
+                    <CardImg top src={dish.image} alt={dish.name} />
+                    <CardBody>
+                      <CardTitle>{dish.name}</CardTitle>
+                      <CardText>{dish.description}</CardText>
+                    </CardBody>
+                </Card>
+                </div>
+            );
+        else
+            return(
+                <div></div>
+            );
+    }
+
+    render() {
+        const destinos = this.props.destinos.map((dish) => {
+            return (
+              <div  key={dish.id} className="col-12 col-md-5 m-1">
+                <Card 
+                  onClick={() => this.onDishSelect(dish)}>
+                  <CardImg width="100%" src={dish.image} alt={dish.name} />
+                  <CardImgOverlay>
+                      <CardTitle>{dish.name}</CardTitle>
+                  </CardImgOverlay>
+                </Card>
+              </div>
+            );
+        });
+
+        return (
+            <div className="container">
+                <div className="row">
+                    {destinos}
+                </div>
+                <div className="row">
+                  <div  className="row">
+                    {this.renderDish(this.state.selectedDish)}
+                  </div>
                 </div>
             </div>
         );
