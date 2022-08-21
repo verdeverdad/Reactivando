@@ -1,6 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import {Navbar, NavbarBrand} from 'reactstrap';
+import {Destinos} from './components/destinosComponent';
+
 
 function App() {
   return (
@@ -12,21 +13,28 @@ function App() {
         <dic className="container">
           <NavbarBrand href='/'>Destinos de Viaje</NavbarBrand> 
         </dic>
-        <img src={logo} className="App-logo" alt="logo" />
+        <Destinos></Destinos>
        
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <img src={logo} className="App-logo" alt="logo" />
+      
       </header>
     </div>
   );
 }
+
+
+/*class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Navbar dark color="primary">
+          <div className="container">
+            <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
+          </div>
+        </Navbar>
+      </div>
+    );
+  }
+}*/
 
 
 export default App;
