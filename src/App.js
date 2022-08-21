@@ -1,6 +1,6 @@
 import './App.css';
 import {Navbar, NavbarBrand} from 'reactstrap';
-import {Destinos} from './components/destinosComponent';
+import Destinos from './components/destinosComponents';
 
 
 function App() {
@@ -13,10 +13,11 @@ function App() {
         <dic className="container">
           <NavbarBrand href='/'>Destinos de Viaje</NavbarBrand> 
         </dic>
-        <Destinos></Destinos>
        
       
       </header>
+      <Destinos />
+      
     </div>
   );
 }
